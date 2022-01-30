@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "reactNativeSecondProjectExpo",
+    "slug": "reactNativeSecondProjectExpo",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "reactNativeSecondProjectExpo"
+}
