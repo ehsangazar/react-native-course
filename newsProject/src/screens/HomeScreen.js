@@ -4,7 +4,7 @@ import Card from "../components/Card/Card";
 import { FlatList } from "react-native";
 import Layout from "../components/Layout/Layout";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [news, setNews] = React.useState([]);
 
   useEffect(() => {
@@ -18,8 +18,12 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <Layout>
-      <FlatList data={news} renderItem={({ item }) => <Card data={item} />} />
+    <Layout navigation={navigation}>
+      <FlatList
+        data={news}
+        keyExtractor={(item) => item.title}
+        renderItem={({ item }) => <Card data={item} />}
+      />
     </Layout>
   );
 };

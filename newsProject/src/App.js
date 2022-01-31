@@ -11,18 +11,16 @@ import {
 } from "@expo-google-fonts/ubuntu";
 import styled, { ThemeProvider } from "styled-components/native";
 
+import AboutScreen from "./screens/AboutScreen";
 import AppLoading from "expo-app-loading";
 import HomeScreen from "./screens/HomeScreen";
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import theme from "./config/theme";
 
-const StyledView = styled.SafeAreaView`
-  flex: 1;
-  background-color: #fff;
-  justify-content: center;
-  align-items: center;
-`;
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -42,10 +40,13 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StyledView>
+      <NavigationContainer>
         <StatusBar style="auto" />
-        <HomeScreen />
-      </StyledView>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="About" component={AboutScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
