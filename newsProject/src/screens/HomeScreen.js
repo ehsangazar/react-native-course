@@ -1,8 +1,28 @@
+import { FlatList, ScrollView } from "react-native";
 import React, { useEffect } from "react";
 
+import Button from "../components/Button/Button";
 import Card from "../components/Card/Card";
-import { FlatList } from "react-native";
 import Layout from "../components/Layout/Layout";
+import styled from "styled-components/native";
+
+const StyledButtonView = styled.View`
+  flex-direction: row;
+  padding: 10px 15px;
+  height: 60px;
+`;
+
+const newsTopics = [
+  "Bitcoin",
+  "Covid",
+  "USA",
+  "Iran",
+  "Australia",
+  "Politic",
+  "Iraq",
+  "Oil",
+  "Tesla",
+];
 
 const HomeScreen = ({ navigation }) => {
   const [news, setNews] = React.useState([]);
@@ -17,8 +37,22 @@ const HomeScreen = ({ navigation }) => {
       });
   }, []);
 
+  const handleClickButton = (buttonText) => {
+    navigation.navigate("Topic", { topic: buttonText });
+  };
+
   return (
     <Layout navigation={navigation}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <StyledButtonView>
+          {newsTopics.map((topic) => (
+            <Button
+              buttonText={topic}
+              onPress={() => handleClickButton(topic)}
+            />
+          ))}
+        </StyledButtonView>
+      </ScrollView>
       <FlatList
         data={news}
         keyExtractor={(item) => item.title}

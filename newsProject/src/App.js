@@ -17,6 +17,7 @@ import HomeScreen from "./screens/HomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
+import TopicScreen from "./screens/TopicScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import theme from "./config/theme";
 
@@ -45,6 +46,7 @@ export default function App() {
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="About" component={AboutScreen} />
+          <Stack.Screen name="Topic" component={TopicScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

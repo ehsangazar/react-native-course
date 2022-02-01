@@ -1,4 +1,4 @@
-import { Linking, TouchableOpacity } from "react-native";
+import { Alert, Linking, TouchableOpacity } from "react-native";
 
 import React from "react";
 import styled from "styled-components/native";
@@ -25,7 +25,18 @@ const StyledImage = styled.Image`
 
 const Card = ({ data }) => {
   const onPress = () => {
-    Linking.openURL(data.url);
+    Alert.alert(
+      "Are you sure you want to leave the app?",
+      "Your app will be in the background",
+      [
+        {
+          text: "NO",
+          onPress: () => console.log("No was Pressed"),
+          style: "NO",
+        },
+        { text: "YES", onPress: () => Linking.openURL(data.url) },
+      ]
+    );
   };
   return (
     <TouchableOpacity onPress={onPress}>
