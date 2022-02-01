@@ -13,6 +13,7 @@ import styled, { ThemeProvider } from "styled-components/native";
 
 import AboutScreen from "./screens/AboutScreen";
 import AppLoading from "expo-app-loading";
+import ContactScreen from "./screens/ContactScreen";
 import HomeScreen from "./screens/HomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
@@ -43,10 +44,11 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <StatusBar style="auto" />
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Contact">
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="About" component={AboutScreen} />
           <Stack.Screen name="Topic" component={TopicScreen} />
+          <Stack.Screen name="Contact" component={ContactScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

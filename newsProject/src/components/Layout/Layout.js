@@ -10,6 +10,9 @@ const Layout = ({ navigation, children }) => {
   const onPressAboutButton = () => {
     navigation.navigate("About");
   };
+  const onPressContactButton = () => {
+    navigation.navigate("Contact");
+  };
   return (
     <StyledView>
       <StyledHeaderView>
@@ -22,6 +25,9 @@ const Layout = ({ navigation, children }) => {
         </StyledTouchableOpacityFooterIcon>
         <StyledTouchableOpacityFooterIcon onPress={onPressAboutButton}>
           <Feather name="smile" size={24} color="white" />
+        </StyledTouchableOpacityFooterIcon>
+        <StyledTouchableOpacityFooterIcon onPress={onPressContactButton}>
+          <AntDesign name="contacts" size={24} color="white" />
         </StyledTouchableOpacityFooterIcon>
       </StyledFooterView>
     </StyledView>
