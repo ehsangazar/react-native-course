@@ -1,4 +1,4 @@
-import { FlatList, ScrollView } from "react-native";
+import { Animated, Easing, FlatList, ScrollView } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 
 import AppContext from "../contexts/AppContext";
@@ -28,9 +28,26 @@ const newsTopics = [
 const HomeScreen = ({ navigation }) => {
   const [news, setNews] = useState([]);
   const { appData } = useContext(AppContext);
+  let opacity = new Animated.Value(0);
+
+  const animate = (easing) => {
+    opacity.setValue(0);
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 500,
+      easing,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const animatedStyles = [
+    {
+      opacity,
+    },
+  ];
 
   const getNews = () => {
-    fetch(
+    return fetch(
       "https://newsapi.org/v2/top-headlines?country=us&apiKey=99904d0c023e4f6ba27b4e7165672ea0"
     )
       .then((response) => response.json())
@@ -41,7 +58,12 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     getNews();
+    animate(Easing.in(Easing.bounce));
   }, []);
+
+  useEffect(() => {
+    animate(Easing.in(Easing.bounce));
+  }, [news]);
 
   useEffect(() => {
     if (appData.isActive === "active") {
@@ -68,7 +90,11 @@ const HomeScreen = ({ navigation }) => {
       <FlatList
         data={news}
         keyExtractor={(item) => item.title}
-        renderItem={({ item }) => <Card data={item} />}
+        renderItem={({ item }) => (
+          <Animated.View style={animatedStyles}>
+            <Card data={item} />
+          </Animated.View>
+        )}
       />
     </Layout>
   );
