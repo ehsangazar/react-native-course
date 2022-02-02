@@ -16,6 +16,7 @@ const StyledCardTitleText = styled.Text`
   font-family: ${({ theme }) => theme.typography.heading2.fontFamily};
   padding: 8px;
   flex: 1;
+  color: ${({ theme }) => theme.textColor};
 `;
 const StyledImage = styled.Image`
   width: 100px;

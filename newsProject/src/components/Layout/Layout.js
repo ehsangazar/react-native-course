@@ -37,6 +37,7 @@ const Layout = ({ navigation, children }) => {
 const StyledView = styled.View`
   flex: 1;
   width: 100%;
+  background-color: ${({ theme }) => theme.backgroundColor};
 `;
 const StyledHeaderView = styled.View`
   justify-content: flex-start;
@@ -57,6 +58,7 @@ const StyledFooterView = styled.View`
 const StyledText = styled.Text`
   font-size: ${({ theme }) => theme.typography.heading1.fontSize};
   font-family: ${({ theme }) => theme.typography.heading1.fontFamily};
+  color: ${({ theme }) => theme.textColor};
 `;
 const StyledTouchableOpacityFooterIcon = styled.TouchableOpacity`
   flex: 1;

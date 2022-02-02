@@ -13,6 +13,7 @@ const StyledTopicText = styled.Text`
 `;
 const StyledParagraphText = styled.Text`
   font-size: ${({ theme }) => theme.typography.heading3.fontSize};
+  color: ${({ theme }) => theme.textColor};
 `;
 const StyledTextInput = styled.TextInput`
   font-size: ${({ theme }) => theme.typography.heading2.fontSize};
@@ -20,12 +21,14 @@ const StyledTextInput = styled.TextInput`
   border-width: 1;
   padding: 10px;
   border-radius: 10px;
+  border-color: #ccc;
   margin: 10px 3px;
 `;
 const StyledTextAreaInput = styled.TextInput`
   font-size: ${({ theme }) => theme.typography.heading2.fontSize};
   height: 100px;
   border-width: 1;
+  border-color: #ccc;
   padding: 10px;
   border-radius: 10px;
   margin: 10px 3px;
@@ -55,12 +58,14 @@ const ContactScreen = ({ navigation }) => {
                 onBlur={handleBlur("subject")}
                 value={values.subject}
                 placeholder="Subject"
+                placeholderTextColor="#ccc"
               />
               <StyledTextInput
                 onChangeText={handleChange("email")}
                 onBlur={handleBlur("email")}
                 value={values.email}
                 placeholder="Email"
+                placeholderTextColor="#ccc"
               />
               <StyledTextAreaInput
                 onChangeText={handleChange("message")}
@@ -69,6 +74,7 @@ const ContactScreen = ({ navigation }) => {
                 placeholder="Message"
                 multiline
                 numberOfLines={4}
+                placeholderTextColor="#ccc"
               />
               <Button onPress={handleSubmit} buttonText="Submit" />
             </StyledElementView>

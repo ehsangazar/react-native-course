@@ -1,6 +1,7 @@
 import { FlatList, ScrollView } from "react-native";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+import AppContext from "../contexts/AppContext";
 import Button from "../components/Button/Button";
 import Card from "../components/Card/Card";
 import Layout from "../components/Layout/Layout";
@@ -25,9 +26,10 @@ const newsTopics = [
 ];
 
 const HomeScreen = ({ navigation }) => {
-  const [news, setNews] = React.useState([]);
+  const [news, setNews] = useState([]);
+  const { appData } = useContext(AppContext);
 
-  useEffect(() => {
+  const getNews = () => {
     fetch(
       "https://newsapi.org/v2/top-headlines?country=us&apiKey=99904d0c023e4f6ba27b4e7165672ea0"
     )
@@ -35,7 +37,17 @@ const HomeScreen = ({ navigation }) => {
       .then((response) => {
         setNews(response.articles);
       });
+  };
+
+  useEffect(() => {
+    getNews();
   }, []);
+
+  useEffect(() => {
+    if (appData.isActive === "active") {
+      getNews();
+    }
+  }, [appData.isActive]);
 
   const handleClickButton = (buttonText) => {
     navigation.navigate("Topic", { topic: buttonText });
