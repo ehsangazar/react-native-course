@@ -5,7 +5,13 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "first-release"
+    },
+    "android": {
+      "package": "com.ehsangazar.newsProject"
+    }
   },
   "name": "newsProject"
 }
